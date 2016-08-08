@@ -145,4 +145,4 @@ let cls: AnyClass? = NSClassFromString(命名空间 + "." + 类名)
 *   该项目最低支持 iOS 8.0 和 Xcode 7.3
 
 ##  许可证
-    XHTabBarSwift 使用 MIT 许可证，详情见 LICENSE 文件
+    XHTabBar-Swift 使用 MIT 许可证，详情见 LICENSE 文件
