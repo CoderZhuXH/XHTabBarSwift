@@ -4,7 +4,7 @@
 //
 //  Created by xiaohui on 16/8/8.
 //  Copyright © 2016年 qiantou. All rights reserved.
-//
+//  代码地址:https://github.com/CoderZhuXH/XHTabBar-Swift
 
 import UIKit
 

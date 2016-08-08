@@ -10,36 +10,36 @@
 ## 使用方法
 ### 1.在Appdelegate 中初始化,并设置为根控制器
 ```swift
-        /*
-         控制器name数组
-         */
-        let  controllerArray = ["MainVC","MsgVC","FriendVC","MeVC"]
-        /*
-         title数组
-         */
-        let  titleArray = ["首页","消息","朋友","我的"]
-        /*
-         默认图片数组
-         */
-        let  imageArray = ["home_tabbar","msg_tabbar","friend_tabbar","me_tabbar"]
-        /*
-         选中图片数组
-         */
-        let  selImageArray = ["home_tabbar_sel","msg_tabbar_sel","friend_tabbar_sel","me_tabbar_sel"]
-        /*
-         tabbar高度, 传nil默认49
-         */
-        let height = CGFloat(49)
+    /*
+    控制器name数组
+    */
+    let  controllerArray = ["MainVC","MsgVC","FriendVC","MeVC"]
+    /*
+    title数组
+    */
+    let  titleArray = ["首页","消息","朋友","我的"]
+    /*
+    默认图片数组
+    */
+    let  imageArray = ["home_tabbar","msg_tabbar","friend_tabbar","me_tabbar"]
+    /*
+    选中图片数组
+     */
+    let  selImageArray = ["home_tabbar_sel","msg_tabbar_sel","friend_tabbar_sel","me_tabbar_sel"]
+    /*
+    tabbar高度, 传nil默认49
+    */
+    let height = CGFloat(49)
         
-        /*
-         创建tabBarController
-         */
-        let tabBarController = XHTabBar(controllerArray:controllerArray,titleArray: titleArray,imageArray: imageArray,selImageArray: selImageArray,height:height)
+    /*
+    创建tabBarController
+    */
+    let tabBarController = XHTabBar(controllerArray:controllerArray,titleArray: titleArray,imageArray: imageArray,selImageArray: selImageArray,height:height)
 
-        /*
-         设置为根控制器    
-         */
-        window?.rootViewController = tabBarController
+    /*
+    设置为根控制器    
+    */
+    window?.rootViewController = tabBarController
 ```
 ### 2.影藏tabBar
 ```swift

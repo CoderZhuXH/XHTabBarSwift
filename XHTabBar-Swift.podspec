@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "XHTabBar-Swift"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "一行代码创建自定义TabBar,支持小红点,数字角标及自定义高度"
   s.homepage     = "https://github.com/CoderZhuXH/XHTabBar-Swift"
   s.license      = { :type => "MIT", :file => "LICENSE" }
