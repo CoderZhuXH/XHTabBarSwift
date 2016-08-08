@@ -125,7 +125,7 @@ private let scale:CGFloat = 0.55
 *   1.将 XHTabBar 文件夹添加到工程目录中<br>
 
 ### CocoaPods:<br>
-*   1.在 Podfile 中添加 pod 'XHTabBarSwift'<br>
+*   1.在 Podfile 中添加 pod 'XHTabBar-Swift'<br>
 *   2.执行 pod install 或 pod update<br>
 
 ### Tips
