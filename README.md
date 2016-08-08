@@ -9,7 +9,7 @@
 
 ## 使用方法
 ### 1.在Appdelegate 中初始化,并设置为根控制器
-```
+```swift
         /*
          控制器name数组
          */
@@ -42,7 +42,7 @@
         window?.rootViewController = tabBarController
 ```
 ### 2.影藏tabBar
-```objc
+```swift
      /*
      push界面时,影藏tabBar,如下
      */
@@ -51,7 +51,7 @@
      self.navigationController?.pushViewController(controller, animated: true)
 ```
 ### 3.角标、小红点及其他设置接口
-```objc
+```swift
 
      /**
      *  手动切换显示到指定控制器
@@ -84,7 +84,7 @@
 
 ```
 ### 4.定义tabbar文字大小,颜色,请在XHTabBar.m 顶部修改下面值即可
-```objc
+```swift
 /**
  *  tabbar背景色
  */
@@ -133,11 +133,11 @@ private let scale:CGFloat = 0.55
 
 ## 注意
 *  该项目通过 `动态获取命名空间` + `.` + `类名` 来创建类对象,如下:
-```
+```swift
 let cls: AnyClass? = NSClassFromString(命名空间 + "." + 类名)
 ```
 *  实测中发现,当命名空间中含有 ` - ` 等特殊字符时 创建类对象会为 `nil`
-*  1.项目命名空间默认为项目名称.
+*  1.项目命名空间默认为项目名称.<br>
    2.当碰到类名称正确 创建类对象失败(即`报error:cls不能当做UIViewController错误时`)时,可以到TARGETS -> Build Settings ->Produce Name 中修改命名空间,去掉命名空间中 ` - ` 等特殊字符:
 ![image](http://d3.freep.cn/3tb_160808120735c67e569478.png)
 
@@ -146,5 +146,3 @@ let cls: AnyClass? = NSClassFromString(命名空间 + "." + 类名)
 
 ##  许可证
     XHTabBarSwift 使用 MIT 许可证，详情见 LICENSE 文件
-
-
