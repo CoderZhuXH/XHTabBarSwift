@@ -131,6 +131,10 @@ class XHTabBar:UITabBarController {
         {
             tabBarHeight = tempHeight;
         }
+        if tabBarHeight < 49.0
+        {
+            tabBarHeight = 49.0
+        }
         
         super.init(nibName: nil, bundle: nil)
     }

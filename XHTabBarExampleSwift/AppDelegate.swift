@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         let  selImageArray = ["home_tabbar_sel","msg_tabbar_sel","friend_tabbar_sel","me_tabbar_sel"]
         /*
-         tabbar高度, 传nil默认49
+         tabbar高度最小值49.0, 传nil或<49.0均按49.0处理
          */
         let height = CGFloat(49)
         
@@ -46,29 +46,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          */
         let tabBarController = XHTabBar(controllerArray:controllerArray,titleArray: titleArray,imageArray: imageArray,selImageArray: selImageArray,height:height)
         
+        /**
+         *  设为根控制器
+         */
+        window?.rootViewController = tabBarController
+        
         /*
-         设置数字角标
+         设置数字角标(可选)
          */
         tabBarController.showBadgeMark(100, index: 1)
                 
         /*
-         设置小红点
+         设置小红点(可选)
          */
         tabBarController.showPointMarkIndex(2)
         
         /*
-         不显示小红点/数字角标
+         不显示小红点/数字角标(可选)
          */
         //tabBarController.hideMarkIndex(3)
         
         /*
-         手动切换tabBarController 显示到指定控制器
+         手动切换tabBarController 显示到指定控制器(可选)
          */
         //tabBarController.showControllerIndex(3)
         
-        
-        window?.rootViewController = tabBarController
-        
+
         window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.

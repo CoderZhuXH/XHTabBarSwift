@@ -27,7 +27,7 @@
      */
     let  selImageArray = ["home_tabbar_sel","msg_tabbar_sel","friend_tabbar_sel","me_tabbar_sel"]
     /*
-    tabbar高度, 传nil默认49
+    tabbar高度最小值49.0, 传nil或<49.0均按49.0处理
     */
     let height = CGFloat(49)
         
