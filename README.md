@@ -60,7 +60,7 @@
      *
      *  - param: index 位置
      */
-    func showControllerIndex(index: Int)
+    public func showControllerIndex(index: Int)
     
     /**
      *  设置数字角标
@@ -68,21 +68,21 @@
      *  - param: num   所要显示数字
      *  - param: index 位置
      */
-    func showBadgeMark(badge: Int, index: Int)
+    public func showBadgeMark(badge: Int, index: Int)
         
     /**
      *  设置小红点
      *
      *  - param: index 位置
      */
-    func showPointMarkIndex(index: Int)
+    public func showPointMarkIndex(index: Int)
     
     /**
      *  影藏指定位置角标
      *
      *  - param: index 位置
      */
-    func hideMarkIndex(index: Int)
+    public func hideMarkIndex(index: Int)
 
 ```
 ### 4.定义tabbar文字大小,颜色,请在XHTabBar.m 顶部修改下面值即可
