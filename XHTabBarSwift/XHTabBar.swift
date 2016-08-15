@@ -4,7 +4,7 @@
 //
 //  Created by xiaohui on 16/8/8.
 //  Copyright © 2016年 qiantou. All rights reserved.
-//  代码地址:https://github.com/CoderZhuXH/XHTabBar-Swift
+//  代码地址:https://github.com/CoderZhuXH/XHTabBarSwift
 
 import UIKit
 
@@ -32,12 +32,12 @@ func ColorRandom() -> UIColor {
 /**
  *  屏幕宽度
  */
-let MWIDTH = UIScreen.mainScreen().bounds.size.width
+private let MWIDTH = UIScreen.mainScreen().bounds.size.width
 
 /**
  *  屏幕高度
  */
-let MHEIGHT = UIScreen.mainScreen().bounds.size.height
+private let MHEIGHT = UIScreen.mainScreen().bounds.size.height
 
 /**
  *  tabbar背景色
@@ -74,6 +74,112 @@ private let pointMarkD:CGFloat = 12.0
  */
 private let scale:CGFloat = 0.55
 
+
+extension XHTabBar{
+
+    /**
+     *  切换显示控制器
+     *
+     *  - param: index 位置
+     */
+    public func showControllerIndex(index: Int) {
+        
+        guard index < controllerArray.count else
+        {
+            print("error:index="+"\(index)"+"超出范围")
+            return;
+        }
+        self.seleBtn!.selected = false
+        let button = (cusTabbar.viewWithTag(1000+index) as? UIButton)!
+        button.selected = true
+        self.seleBtn = button
+        self.selectedIndex = index
+    }
+    
+    /**
+     *  设置数字角标
+     *
+     *  - param: num   所要显示数字
+     *  - param: index 位置
+     */
+    public func showBadgeMark(badge: Int, index: Int) {
+        
+        guard index < controllerArray.count else
+        {
+            print("error:index="+"\(index)"+"超出范围")
+            return;
+        }
+        
+        let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
+        numLabel.hidden = false
+        var nFrame = numLabel.frame
+        if badge <= 0 {
+            //隐藏角标
+            self.hideMarkIndex(index)
+            
+        } else {
+            
+            if badge > 0 && badge <= 9 {
+                
+                nFrame.size.width = numMarkD
+                
+            } else if badge > 9 && badge <= 19 {
+                
+                nFrame.size.width = numMarkD+5
+                
+            } else {
+                
+                nFrame.size.width = numMarkD+10
+                
+            }
+            nFrame.size.height = numMarkD
+            numLabel.frame = nFrame
+            numLabel.layer.cornerRadius = numMarkD/2.0
+            numLabel.text = "\(badge)"
+            if badge > 99 {
+                numLabel.text = "99+"
+            }
+            
+        }
+    }
+    
+    /**
+     *  设置小红点
+     *
+     *  - param: index 位置
+     */
+    public func showPointMarkIndex(index: Int) {
+        guard index < controllerArray.count else
+        {
+            print("error:index="+"\(index)"+"超出范围")
+            return;
+        }
+        let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
+        numLabel.hidden = false
+        var nFrame = numLabel.frame
+        nFrame.size.height = pointMarkD
+        nFrame.size.width = pointMarkD
+        numLabel.frame = nFrame
+        numLabel.layer.cornerRadius = pointMarkD/2.0
+        numLabel.text = ""
+    }
+    
+    /**
+     *  影藏指定位置角标
+     *
+     *  - param: index 位置
+     */
+    public func hideMarkIndex(index: Int) {
+        guard index < controllerArray.count else
+        {
+            print("error:index="+"\(index)"+"超出范围")
+            return;
+        }
+        let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
+        numLabel.hidden = true
+    }
+    
+}
 //MARK: - TabBarButton
 class XHTabBarButton:UIButton {
     
@@ -110,7 +216,7 @@ class XHTabBarButton:UIButton {
 }
 
 //MARK: - TabBarController
-class XHTabBar:UITabBarController {
+public class XHTabBar:UITabBarController {
     
     var seleBtn: UIButton?
     var tabBarHeight:CGFloat = 49.0
@@ -120,7 +226,7 @@ class XHTabBar:UITabBarController {
     var controllerArray = [String]()
     
     
-    init(controllerArray: [String], titleArray: [String],imageArray: [String],selImageArray: [String],height: CGFloat?) {
+   public init(controllerArray: [String], titleArray: [String],imageArray: [String],selImageArray: [String],height: CGFloat?) {
         
         self.controllerArray = controllerArray
         self.titleArray = titleArray
@@ -139,7 +245,7 @@ class XHTabBar:UITabBarController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         
         addController()
@@ -148,7 +254,7 @@ class XHTabBar:UITabBarController {
         setupTabbarLine()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -255,109 +361,7 @@ class XHTabBar:UITabBarController {
         let index: Int = button.tag-1000
         self.showControllerIndex(index)
     }
-    
-    /**
-     *  切换显示控制器
-     *
-     *  - param: index 位置
-     */
-    func showControllerIndex(index: Int) {
-        
-        guard index < controllerArray.count else
-        {
-            print("error:index="+"\(index)"+"超出范围")
-            return;
-        }
-        self.seleBtn!.selected = false
-        let button = (cusTabbar.viewWithTag(1000+index) as? UIButton)!
-        button.selected = true
-        self.seleBtn = button
-        self.selectedIndex = index
-    }
-    
-    /**
-     *  设置数字角标
-     *
-     *  - param: num   所要显示数字
-     *  - param: index 位置
-     */
-    func showBadgeMark(badge: Int, index: Int) {
-        
-        guard index < controllerArray.count else
-        {
-            print("error:index="+"\(index)"+"超出范围")
-            return;
-        }
-        
-        let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
-        numLabel.hidden = false
-        var nFrame = numLabel.frame
-        if badge <= 0 {
-            //隐藏角标
-            self.hideMarkIndex(index)
-            
-        } else {
-            
-            if badge > 0 && badge <= 9 {
-                
-                nFrame.size.width = numMarkD
-                
-            } else if badge > 9 && badge <= 19 {
-                
-                nFrame.size.width = numMarkD+5
-                
-            } else {
-                
-                nFrame.size.width = numMarkD+10
-                
-            }
-            nFrame.size.height = numMarkD
-            numLabel.frame = nFrame
-            numLabel.layer.cornerRadius = numMarkD/2.0
-            numLabel.text = "\(badge)"
-            if badge > 99 {
-                numLabel.text = "99+"
-            }
-            
-        }
-    }
-    
-    /**
-     *  设置小红点
-     *
-     *  - param: index 位置
-     */
-    func showPointMarkIndex(index: Int) {
-        guard index < controllerArray.count else
-        {
-            print("error:index="+"\(index)"+"超出范围")
-            return;
-        }
-        let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
-        numLabel.hidden = false
-        var nFrame = numLabel.frame
-        nFrame.size.height = pointMarkD
-        nFrame.size.width = pointMarkD
-        numLabel.frame = nFrame
-        numLabel.layer.cornerRadius = pointMarkD/2.0
-        numLabel.text = ""
-    }
-    
-    /**
-     *  影藏指定位置角标
-     *
-     *  - param: index 位置
-     */
-    func hideMarkIndex(index: Int) {
-        guard index < controllerArray.count else
-        {
-            print("error:index="+"\(index)"+"超出范围")
-            return;
-        }
-        let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
-        numLabel.hidden = true
-    }
-    
+
     //MARK: - 懒加载
     private lazy var cusTabbar: UIView = {
         

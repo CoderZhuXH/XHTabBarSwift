@@ -1,4 +1,4 @@
-﻿# XHTabBar-Swift
+﻿# XHTabBarSwift
 #### 一行代码创建自定义TabBar,支持小红点,数字角标及自定义高度
 
 ####[OC版请戳这里>>>](https://github.com/CoderZhuXH/XHTabBar)
@@ -125,8 +125,9 @@ private let scale:CGFloat = 0.55
 *   1.将 XHTabBar 文件夹添加到工程目录中<br>
 
 ### CocoaPods:<br>
-*   1.在 Podfile 中添加 pod 'XHTabBar-Swift'<br>
+*   1.在 Podfile 中添加 pod 'XHTabBarSwift'<br>
 *   2.执行 pod install 或 pod update<br>
+*   3.导入 import XHTabBarSwift
 
 ### Tips
 *    如果你发现你执行`pod install`后,导入的不是最新的,请删除`Podfile.lock`文件,在执行一次 `pod install` 
@@ -145,4 +146,4 @@ let cls: AnyClass? = NSClassFromString(命名空间 + "." + 类名)
 *   该项目最低支持 iOS 8.0 和 Xcode 7.3
 
 ##  许可证
-    XHTabBar-Swift 使用 MIT 许可证，详情见 LICENSE 文件
+    XHTabBarSwift 使用 MIT 许可证，详情见 LICENSE 文件

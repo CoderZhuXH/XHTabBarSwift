@@ -15,7 +15,6 @@
 		4B2A72E71D5826E1006A1C65 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2A72CC1D5826E1006A1C65 /* MainVC.swift */; };
 		4B2A72E81D5826E1006A1C65 /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2A72CD1D5826E1006A1C65 /* MeVC.swift */; };
 		4B2A72E91D5826E1006A1C65 /* MsgVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2A72CE1D5826E1006A1C65 /* MsgVC.swift */; };
-		4B2A72EA1D5826E1006A1C65 /* XHTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2A72D01D5826E1006A1C65 /* XHTabBar.swift */; };
 		4B2A72EB1D5826E1006A1C65 /* find_tabbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A72D21D5826E1006A1C65 /* find_tabbar@2x.png */; };
 		4B2A72EC1D5826E1006A1C65 /* find_tabbar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A72D31D5826E1006A1C65 /* find_tabbar@3x.png */; };
 		4B2A72ED1D5826E1006A1C65 /* find_tabbar_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A72D41D5826E1006A1C65 /* find_tabbar_sel@2x.png */; };
@@ -36,6 +35,7 @@
 		4B2A72FC1D5826E1006A1C65 /* msg_tabbar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A72E31D5826E1006A1C65 /* msg_tabbar@3x.png */; };
 		4B2A72FD1D5826E1006A1C65 /* msg_tabbar_sel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A72E41D5826E1006A1C65 /* msg_tabbar_sel@2x.png */; };
 		4B2A72FE1D5826E1006A1C65 /* msg_tabbar_sel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B2A72E51D5826E1006A1C65 /* msg_tabbar_sel@3x.png */; };
+		4B7C87A71D6195820099E1FA /* XHTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7C87A61D6195820099E1FA /* XHTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,7 +49,6 @@
 		4B2A72CC1D5826E1006A1C65 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		4B2A72CD1D5826E1006A1C65 /* MeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		4B2A72CE1D5826E1006A1C65 /* MsgVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MsgVC.swift; sourceTree = "<group>"; };
-		4B2A72D01D5826E1006A1C65 /* XHTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHTabBar.swift; sourceTree = "<group>"; };
 		4B2A72D21D5826E1006A1C65 /* find_tabbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_tabbar@2x.png"; sourceTree = "<group>"; };
 		4B2A72D31D5826E1006A1C65 /* find_tabbar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_tabbar@3x.png"; sourceTree = "<group>"; };
 		4B2A72D41D5826E1006A1C65 /* find_tabbar_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_tabbar_sel@2x.png"; sourceTree = "<group>"; };
@@ -70,6 +69,7 @@
 		4B2A72E31D5826E1006A1C65 /* msg_tabbar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_tabbar@3x.png"; sourceTree = "<group>"; };
 		4B2A72E41D5826E1006A1C65 /* msg_tabbar_sel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_tabbar_sel@2x.png"; sourceTree = "<group>"; };
 		4B2A72E51D5826E1006A1C65 /* msg_tabbar_sel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "msg_tabbar_sel@3x.png"; sourceTree = "<group>"; };
+		4B7C87A61D6195820099E1FA /* XHTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XHTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 			isa = PBXGroup;
 			children = (
 				4B2A72CA1D5826E1006A1C65 /* Classes */,
-				4B2A72CF1D5826E1006A1C65 /* XHTabBar */,
+				4B7C87A51D6195820099E1FA /* XHTabBarSwift */,
 				4B2A72D11D5826E1006A1C65 /* Image */,
 				4B2A72B71D5826B1006A1C65 /* XHTabBarExampleSwift */,
 				4B2A72B61D5826B1006A1C65 /* Products */,
@@ -125,14 +125,6 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		4B2A72CF1D5826E1006A1C65 /* XHTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				4B2A72D01D5826E1006A1C65 /* XHTabBar.swift */,
-			);
-			path = XHTabBar;
-			sourceTree = "<group>";
-		};
 		4B2A72D11D5826E1006A1C65 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +150,14 @@
 				4B2A72E51D5826E1006A1C65 /* msg_tabbar_sel@3x.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		4B7C87A51D6195820099E1FA /* XHTabBarSwift */ = {
+			isa = PBXGroup;
+			children = (
+				4B7C87A61D6195820099E1FA /* XHTabBar.swift */,
+			);
+			path = XHTabBarSwift;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,9 +252,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B2A72E91D5826E1006A1C65 /* MsgVC.swift in Sources */,
+				4B7C87A71D6195820099E1FA /* XHTabBar.swift in Sources */,
 				4B2A72E81D5826E1006A1C65 /* MeVC.swift in Sources */,
 				4B2A72E71D5826E1006A1C65 /* MainVC.swift in Sources */,
-				4B2A72EA1D5826E1006A1C65 /* XHTabBar.swift in Sources */,
 				4B2A72E61D5826E1006A1C65 /* FriendVC.swift in Sources */,
 				4B2A72B91D5826B1006A1C65 /* AppDelegate.swift in Sources */,
 			);
