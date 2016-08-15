@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-﻿# XHTabBarSwift
-=======
+
 # XHTabBarSwift
->>>>>>> origin/master
+
 #### 一行代码创建自定义TabBar,支持小红点,数字角标及自定义高度
 
 ####[OC版请戳这里>>>](https://github.com/CoderZhuXH/XHTabBar)
