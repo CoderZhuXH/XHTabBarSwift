@@ -18,7 +18,7 @@ class MainVC: UIViewController {
         self.view.backgroundColor = ColorRandom()//随机色
         
         self.view.addSubview(pushButton)
-    
+        
         // Do any additional setup after loading the view.
     }
 
