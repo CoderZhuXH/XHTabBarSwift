@@ -3,7 +3,7 @@
 //  XHTabBarExampleSwift
 //
 //  Created by xiaohui on 16/8/8.
-//  Copyright © 2016年 qiantou. All rights reserved.
+//  Copyright © 2016年 CoderZhuXH. All rights reserved.
 //
 
 import UIKit
@@ -22,18 +22,18 @@ class MainVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    private lazy var pushButton:UIButton = {
+    fileprivate lazy var pushButton:UIButton = {
         
-        let button = UIButton(type: UIButtonType.Custom)
-        button.bounds = CGRectMake(0,0,100,40)
+        let button = UIButton(type: UIButtonType.custom)
+        button.bounds = CGRect(x: 0,y: 0,width: 100,height: 40)
         button.center = self.view.center
-        button.setTitle("Push", forState: UIControlState.Normal)
-        button.backgroundColor = UIColor.orangeColor()
-        button.addTarget(self, action:#selector(MainVC.pushAction), forControlEvents: UIControlEvents.TouchUpInside)
+        button.setTitle("Push", for: UIControlState())
+        button.backgroundColor = UIColor.orange
+        button.addTarget(self, action:#selector(MainVC.pushAction), for: UIControlEvents.touchUpInside)
         return button;
     }()
     
-    @objc private func pushAction()
+    @objc fileprivate func pushAction()
     {
         
         let controller = UIViewController.init()

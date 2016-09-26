@@ -3,7 +3,7 @@
 //  XHTabBarExampleSwift
 //
 //  Created by xiaohui on 16/8/8.
-//  Copyright © 2016年 qiantou. All rights reserved.
+//  Copyright © 2016年 CoderZhuXH. All rights reserved.
 //  代码地址:https://github.com/CoderZhuXH/XHTabBarSwift
 
 import UIKit
@@ -11,14 +11,14 @@ import UIKit
 /**
  *  RGBA颜色
  */
-func ColorRGBA(r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat) -> UIColor {
+func ColorRGBA(_ r:CGFloat,g:CGFloat,b:CGFloat,a:CGFloat) -> UIColor {
     
     return UIColor(red:r/255.0,green:g/255.0,blue:b/255.0,alpha:a)
 }
 /**
  *  RGB颜色
  */
-func ColorRGB(r:CGFloat,g:CGFloat,b:CGFloat) -> UIColor {
+func ColorRGB(_ r:CGFloat,g:CGFloat,b:CGFloat) -> UIColor {
     
     return ColorRGBA(r, g: g, b: b, a: 1.0)
 }
@@ -32,22 +32,22 @@ func ColorRandom() -> UIColor {
 /**
  *  屏幕宽度
  */
-private let MWIDTH = UIScreen.mainScreen().bounds.size.width
+private let MWIDTH = UIScreen.main.bounds.size.width
 
 /**
  *  屏幕高度
  */
-private let MHEIGHT = UIScreen.mainScreen().bounds.size.height
+private let MHEIGHT = UIScreen.main.bounds.size.height
 
 /**
  *  tabbar背景色
  */
-private let ColorTabBar = UIColor.whiteColor()
+private let ColorTabBar = UIColor.white
 
 /**
  *  title默认颜色
  */
-private let ColorTitle = UIColor.grayColor()
+private let ColorTitle = UIColor.gray
 
 /**
  *  title选中颜色
@@ -82,16 +82,16 @@ extension XHTabBar{
      *
      *  - param: index 位置
      */
-    public func showControllerIndex(index: Int) {
+    public func showControllerIndex(_ index: Int) {
         
         guard index < controllerArray.count else
         {
             print("error:index="+"\(index)"+"超出范围")
             return;
         }
-        self.seleBtn!.selected = false
+        self.seleBtn!.isSelected = false
         let button = (cusTabbar.viewWithTag(1000+index) as? UIButton)!
-        button.selected = true
+        button.isSelected = true
         self.seleBtn = button
         self.selectedIndex = index
     }
@@ -102,7 +102,7 @@ extension XHTabBar{
      *  - param: num   所要显示数字
      *  - param: index 位置
      */
-    public func showBadgeMark(badge: Int, index: Int) {
+    public func showBadgeMark(_ badge: Int, index: Int) {
         
         guard index < controllerArray.count else
         {
@@ -111,7 +111,7 @@ extension XHTabBar{
         }
         
         let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
-        numLabel.hidden = false
+        numLabel.isHidden = false
         var nFrame = numLabel.frame
         if badge <= 0 {
             //隐藏角标
@@ -148,14 +148,14 @@ extension XHTabBar{
      *
      *  - param: index 位置
      */
-    public func showPointMarkIndex(index: Int) {
+    public func showPointMarkIndex(_ index: Int) {
         guard index < controllerArray.count else
         {
             print("error:index="+"\(index)"+"超出范围")
             return;
         }
         let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
-        numLabel.hidden = false
+        numLabel.isHidden = false
         var nFrame = numLabel.frame
         nFrame.size.height = pointMarkD
         nFrame.size.width = pointMarkD
@@ -169,14 +169,14 @@ extension XHTabBar{
      *
      *  - param: index 位置
      */
-    public func hideMarkIndex(index: Int) {
+    public func hideMarkIndex(_ index: Int) {
         guard index < controllerArray.count else
         {
             print("error:index="+"\(index)"+"超出范围")
             return;
         }
         let numLabel = (cusTabbar.viewWithTag(1020+index) as? UILabel)!
-        numLabel.hidden = true
+        numLabel.isHidden = true
     }
     
 }
@@ -187,8 +187,8 @@ class XHTabBarButton:UIButton {
         
         super.init(frame: frame)
         
-        imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        titleLabel?.textAlignment = NSTextAlignment.Center
+        imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        titleLabel?.textAlignment = NSTextAlignment.center
         
     }
     
@@ -197,26 +197,26 @@ class XHTabBarButton:UIButton {
     }
     
     
-    override func imageRectForContentRect(contentRect: CGRect) -> CGRect {
+    override func imageRect(forContentRect contentRect: CGRect) -> CGRect {
         let newX:CGFloat = 0.0
         let newY:CGFloat = 5.0
         let newWidth:CGFloat = CGFloat(contentRect.size.width)
         let newHeight:CGFloat = CGFloat(contentRect.size.height)*scale-newY
-        return CGRectMake(newX, newY, newWidth, newHeight)
+        return CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
     }
     
-    override func titleRectForContentRect(contentRect: CGRect) -> CGRect {
+    override func titleRect(forContentRect contentRect: CGRect) -> CGRect {
         let newX: CGFloat = 0
         let newY: CGFloat = contentRect.size.height*scale
         let newWidth: CGFloat = contentRect.size.width
         let newHeight: CGFloat = contentRect.size.height-contentRect.size.height*scale
-        return CGRectMake(newX, newY, newWidth, newHeight)
+        return CGRect(x: newX, y: newY, width: newWidth, height: newHeight)
     }
     
 }
 
 //MARK: - TabBarController
-public class XHTabBar:UITabBarController {
+open class XHTabBar:UITabBarController {
     
     var seleBtn: UIButton?
     var tabBarHeight:CGFloat = 49.0
@@ -245,7 +245,7 @@ public class XHTabBar:UITabBarController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         addController()
@@ -261,7 +261,7 @@ public class XHTabBar:UITabBarController {
     /**
      添加控制器
      */
-    private func addController(){
+    fileprivate func addController(){
         
         guard controllerArray.count > 0 else
         {
@@ -271,7 +271,7 @@ public class XHTabBar:UITabBarController {
         
         var navArray = [UIViewController]()
         //获取命名空间
-        let ns = NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as! String
+        let ns = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         
         for className in controllerArray {
             
@@ -295,46 +295,46 @@ public class XHTabBar:UITabBarController {
     /**
      添加tabbarButton
      */
-    private func addTabBarButton()
+    fileprivate func addTabBarButton()
     {
         let num = controllerArray.count
         for i in 0..<num {
             
-            let  width = UIScreen.mainScreen().bounds.size.width
+            let  width = UIScreen.main.bounds.size.width
             let  x = CGFloat(width/CGFloat(num)*CGFloat(i))
             let  y:CGFloat = 0.0
             let  w = width/CGFloat(num)
             let  h = tabBarHeight
-            let button = XHTabBarButton(frame:CGRectMake(x,y,w,h))
+            let button = XHTabBarButton(frame:CGRect(x: x,y: y,width: w,height: h))
             
             button.tag = 1000+i
-            button.setTitleColor(ColorTitle, forState: UIControlState.Normal)
-            button.setTitleColor(ColorTitleSel, forState: UIControlState.Selected)
-            button.titleLabel?.font = UIFont.systemFontOfSize(titleFontSize)
-            button.setImage(UIImage.init(named:self.imageArray[i]), forState: UIControlState.Normal)
-            button.setImage(UIImage.init(named: self.selImageArray[i]), forState: UIControlState.Selected)
-            button.setTitle(self.titleArray[i], forState: UIControlState.Normal)
-            button.addTarget(self, action:#selector(buttonAction(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            button.setTitleColor(ColorTitle, for: UIControlState())
+            button.setTitleColor(ColorTitleSel, for: UIControlState.selected)
+            button.titleLabel?.font = UIFont.systemFont(ofSize: titleFontSize)
+            button.setImage(UIImage.init(named:self.imageArray[i]), for: UIControlState())
+            button.setImage(UIImage.init(named: self.selImageArray[i]), for: UIControlState.selected)
+            button.setTitle(self.titleArray[i], for: UIControlState())
+            button.addTarget(self, action:#selector(buttonAction(_:)), for: UIControlEvents.touchUpInside)
             
             cusTabbar.addSubview(button)
             
             //默认选中
             if i == 0 {
                 
-                button.selected = true
+                button.isSelected = true
                 self.seleBtn = button
             }
             
             //角标
-            let numLabel = UILabel(frame: CGRectMake(button.frame.size.width/2.0+6, 3, numMarkD, numMarkD))
+            let numLabel = UILabel(frame: CGRect(x: button.frame.size.width/2.0+6, y: 3, width: numMarkD, height: numMarkD))
             numLabel.layer.masksToBounds = true
             numLabel.layer.cornerRadius = 10
-            numLabel.backgroundColor = UIColor.redColor()
-            numLabel.textColor = UIColor.whiteColor()
-            numLabel.textAlignment = NSTextAlignment.Center
-            numLabel.font = UIFont.systemFontOfSize(13)
+            numLabel.backgroundColor = UIColor.red
+            numLabel.textColor = UIColor.white
+            numLabel.textAlignment = NSTextAlignment.center
+            numLabel.font = UIFont.systemFont(ofSize: 13)
             numLabel.tag = 1020+i
-            numLabel.hidden = true
+            numLabel.isHidden = true
             button.addSubview(numLabel)
         }
     }
@@ -343,7 +343,7 @@ public class XHTabBar:UITabBarController {
     /**
      处理高度>49 tabbar顶部线
      */
-    private func setupTabbarLine()
+    fileprivate func setupTabbarLine()
     {
         guard tabBarHeight > 49 else
         {
@@ -351,26 +351,26 @@ public class XHTabBar:UITabBarController {
         }
         self.tabBar.shadowImage = UIImage.init()
         self.tabBar.backgroundImage = UIImage.init()
-        let line = UILabel(frame: CGRectMake(0, 0,MWIDTH, 0.5))
-        line.backgroundColor = UIColor.lightGrayColor()
+        let line = UILabel(frame: CGRect(x: 0, y: 0,width: MWIDTH, height: 0.5))
+        line.backgroundColor = UIColor.lightGray
         cusTabbar.addSubview(line)
     }
     
     //MARK: - Action
-    @objc private func buttonAction(button: UIButton) {
+    @objc fileprivate func buttonAction(_ button: UIButton) {
         let index: Int = button.tag-1000
         self.showControllerIndex(index)
     }
 
     //MARK: - 懒加载
-    private lazy var cusTabbar: UIView = {
+    fileprivate lazy var cusTabbar: UIView = {
         
         let x = CGFloat(0)
         let y = 49.0 - self.tabBarHeight
         let width = MWIDTH
         let height = self.tabBarHeight
         
-        let view = UIView(frame:CGRectMake(x,y,width,height))
+        let view = UIView(frame:CGRect(x: x,y: y,width: width,height: height))
         view.backgroundColor = ColorTabBar
         
         return view

@@ -69,7 +69,7 @@
      *
      *  - param: index 位置
      */
-    public func showControllerIndex(index: Int)
+    public func showControllerIndex(_ index: Int)
     
     /**
      *  设置数字角标
@@ -77,21 +77,21 @@
      *  - param: num   所要显示数字
      *  - param: index 位置
      */
-    public func showBadgeMark(badge: Int, index: Int)
+    public func showBadgeMark(_ badge:: Int, index: Int)
         
     /**
      *  设置小红点
      *
      *  - param: index 位置
      */
-    public func showPointMarkIndex(index: Int)
+    public func showPointMarkIndex(_ index: Int)
     
     /**
      *  影藏指定位置角标
      *
      *  - param: index 位置
      */
-    public func hideMarkIndex(index: Int)
+    public func hideMarkIndex(_ index: Int)
 
 ```
 ### 4.定义tabbar文字大小,颜色,请在XHTabBar.m 顶部修改下面值即可
@@ -99,12 +99,12 @@
 /**
  *  tabbar背景色
  */
-private let ColorTabBar = UIColor.whiteColor()
+private let ColorTabBar = UIColor.white
 
 /**
  *  title默认颜色
  */
-private let ColorTitle = UIColor.grayColor()
+private let ColorTitle = UIColor.gray
 
 /**
  *  title选中颜色
@@ -130,6 +130,8 @@ private let pointMarkD:CGFloat = 12.0
  *  button 图片与文字上下占比
  */
 private let scale:CGFloat = 0.55
+
+
 ```
 ##  安装
 ### 手动添加:<br>
@@ -155,7 +157,7 @@ let cls: AnyClass? = NSClassFromString(命名空间 + "." + 类名)
 ![image](http://d3.freep.cn/3tb_160808120735c67e569478.png)
 
 ##  系统要求
-*   该项目最低支持 iOS 8.0 和 Xcode 7.3
+*   该项目最低支持 iOS 8.0 和 Xcode 8.0
 
 ##  许可证
     XHTabBarSwift 使用 MIT 许可证，详情见 LICENSE 文件

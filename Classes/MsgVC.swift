@@ -3,7 +3,7 @@
 //  XHTabBarExampleSwift
 //
 //  Created by xiaohui on 16/8/8.
-//  Copyright © 2016年 qiantou. All rights reserved.
+//  Copyright © 2016年 CoderZhuXH. All rights reserved.
 //
 
 import UIKit
