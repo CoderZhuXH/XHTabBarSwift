@@ -322,7 +322,7 @@ open class XHTabBar:UITabBarController {
             button.setImage(UIImage.init(named:self.imageArray[i]), for: UIControlState())
             button.setImage(UIImage.init(named: self.selImageArray[i]), for: UIControlState.selected)
             button.setTitle(self.titleArray[i], for: UIControlState())
-            button.addTarget(self, action:#selector(buttonAction(_:)), for: UIControlEvents.touchUpInside)
+            button.addTarget(self, action:#selector(buttonAction(_:)), for: .touchDown)
             
             cusTabbar.addSubview(button)
             
