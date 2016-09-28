@@ -183,6 +183,13 @@ extension XHTabBar{
 //MARK: - TabBarButton
 class XHTabBarButton:UIButton {
     
+    override var isHighlighted: Bool{
+        
+        didSet{
+            super.isHighlighted = false
+        }
+    }
+    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -273,7 +280,7 @@ open class XHTabBar:UITabBarController {
         //获取命名空间
         let ns = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         
-        for className in controllerArray {
+        for (index, className) in controllerArray.enumerated() {
             
             // 将类名转化为类
             let cls: AnyClass? = NSClassFromString(ns + "." + className)
@@ -285,6 +292,7 @@ open class XHTabBar:UITabBarController {
                 return
             }
             let vc = vcCls.init()
+            vc.title = titleArray[index]
             let nav = UINavigationController(rootViewController:vc)
             navArray.append(nav)
         }
