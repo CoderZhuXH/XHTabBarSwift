@@ -297,7 +297,13 @@ open class XHTabBar:UITabBarController {
             navArray.append(nav)
         }
         
-        self.viewControllers  = navArray;
+        viewControllers  = navArray;
+        // 移除系统创建的空UITabBarButton
+        for view in tabBar.subviews {
+            if view.isKind(of: NSClassFromString("UITabBarButton")!) {
+                view.removeFromSuperview()
+            }
+        }
     }
     
     /**
