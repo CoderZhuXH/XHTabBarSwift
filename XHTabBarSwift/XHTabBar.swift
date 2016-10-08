@@ -76,7 +76,7 @@ private let scale:CGFloat = 0.55
 
 
 extension XHTabBar{
-
+    
     /**
      *  切换显示控制器
      *
@@ -233,7 +233,7 @@ open class XHTabBar:UITabBarController {
     var controllerArray = [String]()
     
     
-   public init(controllerArray: [String], titleArray: [String],imageArray: [String],selImageArray: [String],height: CGFloat?) {
+    public init(controllerArray: [String], titleArray: [String],imageArray: [String],selImageArray: [String],height: CGFloat?) {
         
         self.controllerArray = controllerArray
         self.titleArray = titleArray
@@ -261,6 +261,12 @@ open class XHTabBar:UITabBarController {
         setupTabbarLine()
     }
     
+    override open func viewWillLayoutSubviews() {
+        
+        super.viewWillLayoutSubviews()
+        self.removeTabBarButton()
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -284,7 +290,7 @@ open class XHTabBar:UITabBarController {
             
             // 将类名转化为类
             let cls: AnyClass? = NSClassFromString(ns + "." + className)
-
+            
             //Swift中如果想通过一个Class来创建一个对象, 必须告诉系统这个Class的确切类型
             guard let vcCls = cls as? UIViewController.Type else
             {
@@ -298,12 +304,19 @@ open class XHTabBar:UITabBarController {
         }
         
         viewControllers  = navArray;
-        // 移除系统创建的空UITabBarButton
+    }
+    
+    /**
+     *  移除系统创建的UITabBarButton
+     */
+    fileprivate func removeTabBarButton()
+    {
         for view in tabBar.subviews {
             if view.isKind(of: NSClassFromString("UITabBarButton")!) {
                 view.removeFromSuperview()
             }
         }
+        
     }
     
     /**
@@ -311,6 +324,7 @@ open class XHTabBar:UITabBarController {
      */
     fileprivate func addTabBarButton()
     {
+        
         let num = controllerArray.count
         for i in 0..<num {
             
@@ -375,7 +389,7 @@ open class XHTabBar:UITabBarController {
         let index: Int = button.tag-1000
         self.showControllerIndex(index)
     }
-
+    
     //MARK: - 懒加载
     fileprivate lazy var cusTabbar: UIView = {
         
