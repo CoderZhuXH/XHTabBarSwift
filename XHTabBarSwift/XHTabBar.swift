@@ -76,7 +76,7 @@ private let scale:CGFloat = 0.55
 
 
 extension XHTabBar{
-
+    
     /**
      *  切换显示控制器
      *
@@ -183,6 +183,13 @@ extension XHTabBar{
 //MARK: - TabBarButton
 class XHTabBarButton:UIButton {
     
+    override var isHighlighted: Bool{
+        
+        didSet{
+            super.isHighlighted = false
+        }
+    }
+    
     override init(frame: CGRect) {
         
         super.init(frame: frame)
@@ -226,7 +233,7 @@ open class XHTabBar:UITabBarController {
     var controllerArray = [String]()
     
     
-   public init(controllerArray: [String], titleArray: [String],imageArray: [String],selImageArray: [String],height: CGFloat?) {
+    public init(controllerArray: [String], titleArray: [String],imageArray: [String],selImageArray: [String],height: CGFloat?) {
         
         self.controllerArray = controllerArray
         self.titleArray = titleArray
@@ -254,6 +261,12 @@ open class XHTabBar:UITabBarController {
         setupTabbarLine()
     }
     
+    override open func viewWillLayoutSubviews() {
+        
+        super.viewWillLayoutSubviews()
+        self.removeTabBarButton()
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -273,11 +286,11 @@ open class XHTabBar:UITabBarController {
         //获取命名空间
         let ns = Bundle.main.infoDictionary!["CFBundleExecutable"] as! String
         
-        for className in controllerArray {
+        for (index, className) in controllerArray.enumerated() {
             
             // 将类名转化为类
             let cls: AnyClass? = NSClassFromString(ns + "." + className)
-
+            
             //Swift中如果想通过一个Class来创建一个对象, 必须告诉系统这个Class的确切类型
             guard let vcCls = cls as? UIViewController.Type else
             {
@@ -285,11 +298,25 @@ open class XHTabBar:UITabBarController {
                 return
             }
             let vc = vcCls.init()
+            vc.title = titleArray[index]
             let nav = UINavigationController(rootViewController:vc)
             navArray.append(nav)
         }
         
-        self.viewControllers  = navArray;
+        viewControllers  = navArray;
+    }
+    
+    /**
+     *  移除系统创建的UITabBarButton
+     */
+    fileprivate func removeTabBarButton()
+    {
+        for view in tabBar.subviews {
+            if view.isKind(of: NSClassFromString("UITabBarButton")!) {
+                view.removeFromSuperview()
+            }
+        }
+        
     }
     
     /**
@@ -297,6 +324,7 @@ open class XHTabBar:UITabBarController {
      */
     fileprivate func addTabBarButton()
     {
+        
         let num = controllerArray.count
         for i in 0..<num {
             
@@ -314,7 +342,7 @@ open class XHTabBar:UITabBarController {
             button.setImage(UIImage.init(named:self.imageArray[i]), for: UIControlState())
             button.setImage(UIImage.init(named: self.selImageArray[i]), for: UIControlState.selected)
             button.setTitle(self.titleArray[i], for: UIControlState())
-            button.addTarget(self, action:#selector(buttonAction(_:)), for: UIControlEvents.touchUpInside)
+            button.addTarget(self, action:#selector(buttonAction(_:)), for: .touchDown)
             
             cusTabbar.addSubview(button)
             
@@ -361,7 +389,7 @@ open class XHTabBar:UITabBarController {
         let index: Int = button.tag-1000
         self.showControllerIndex(index)
     }
-
+    
     //MARK: - 懒加载
     fileprivate lazy var cusTabbar: UIView = {
         
