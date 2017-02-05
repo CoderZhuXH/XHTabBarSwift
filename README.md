@@ -151,7 +151,7 @@ private let scale:CGFloat = 0.55
 ```swift
 let cls: AnyClass? = NSClassFromString(命名空间 + "." + 类名)
 ```
-*  实测中发现,当命名空间中含有 ` - ` 等特殊字符时 创建类对象会为 `nil`
+*  实测中发现,当命名空间中含有:中文 及 ` - ` 等特殊字符时 创建类对象会为 `nil`
 *  1.项目命名空间默认为项目名称.<br>
    2.当碰到类名称正确 创建类对象失败(即`报error:cls不能当做UIViewController错误时`)时,可以到TARGETS -> Build Settings ->Produce Name 中修改命名空间为全英文,并去掉命名空间中 ` - ` 等特殊字符:
 ![image](https://github.com/CoderZhuXH/XHTabBarSwift/blob/master/ProductName.png)
